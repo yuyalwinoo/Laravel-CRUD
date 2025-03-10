@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <form class="login-form" action="{{ route('users.login') }}" method="POST">
+                    <form class="login-form" action="{{ route('login') }}" method="POST">
                         @csrf
                         <h2 class="text-center">Login</h2>
                        

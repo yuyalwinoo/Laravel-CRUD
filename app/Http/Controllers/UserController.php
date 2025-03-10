@@ -116,40 +116,4 @@ class UserController extends Controller
         }
     }
 
-    // Login
-
-    public function loginIndex()
-    {
-        return view('users.login');
-    }
-
-    public function login(Request $request)
-    {
-        // dd($request->all());
-        $validator = Validator::make($request->all(), [
-            'email' => ['required','string','email','max:255'],
-            'password' =>'required'
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back()
-                            ->withErrors($validator)
-                            ->withInput();
-        }
-    
-        $validatedData = $validator->validated();
-        
-        $token = null;
-        //dd($validatedData['email']);
-        $user = User::where('email', $validatedData['email'])->firstOrFail();
-        
-        if($user && Hash::check($validatedData['password'], $user->password)) {
-            $token = $user->createToken('user')->plainTextToken;
-   
-            return redirect()->route('posts.index');
-        }else{
-            return redirect()->route('users.login-index')->withErrors(['errors' => 'Provide a valid user.']);
-        }
-        
-    }
 }

@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('posts.index');
+    return view('welcome');
 });
 
 // Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');

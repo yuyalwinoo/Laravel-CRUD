@@ -30,7 +30,7 @@
             @include('layouts.sidebar')
             <!-- Main Component -->
             <div class="main">
-                
+                <input type="hidden" id="hdnSession" data-value="{{ session('api_token') }}" />
                 <main class="p-3">
                     <div class="container-fluid">
                         <div class="mb-3">
@@ -56,5 +56,8 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+        <script src="{{ asset('js/api.js') }}"></script>
     </body>
 </html>

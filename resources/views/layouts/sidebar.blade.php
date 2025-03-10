@@ -1,17 +1,17 @@
 @php
 $menuItems = [
-    [
-        'title' => 'Profile',
-        'icon' => 'lni lni-user',
-        'route' => '#',
-        'submenu' => []
-    ],
-    [
-        'title' => 'Task',
-        'icon' => 'lni lni-agenda',
-        'route' => '#',
-        'submenu' => []
-    ],
+    // [
+    //     'title' => 'Profile',
+    //     'icon' => 'lni lni-user',
+    //     'route' => '#',
+    //     'submenu' => []
+    // ],
+    // [
+    //     'title' => 'Task',
+    //     'icon' => 'lni lni-agenda',
+    //     'route' => '#',
+    //     'submenu' => []
+    // ],
     [
         'title' => 'Post',
         'icon' => 'lni lni-protection',
@@ -19,29 +19,33 @@ $menuItems = [
         'submenu' => [
             [
                 'title' => 'Post Register',
-                'route' => route('posts.create')
+                'route' => route('posts.create'),
+                'routeName' =>'posts.create',
             ],
             [
                 'title' => 'View Posts',
-                'route' => route('posts.index')
+                'route' => route('posts.index'),
+                'routeName' =>'posts.index',
             ]
         ]
     ],
-    // [
-    //     'title' => 'User',
-    //     'icon' => 'lni lni-protection',
-    //     'route' => '#',
-    //     'submenu' => [
-    //         [
-    //             'title' => 'User Register',
-    //             'route' => route('users.create')
-    //         ],
-    //         [
-    //             'title' => 'User List',
-    //             'route' => route('users.index')
-    //         ],
-    //     ]
-    // ]
+    [
+        'title' => 'User',
+        'icon' => 'lni lni-protection',
+        'route' => '#',
+        'submenu' => [
+            [
+                'title' => 'User Register',
+                'route' => route('users.create'),
+                'routeName' =>'users.create',
+            ],
+            [
+                'title' => 'User List',
+                'route' => route('users.index'),
+                'routeName' =>'users.index',
+            ],
+        ]
+    ]
 ];
 @endphp
 
@@ -69,7 +73,7 @@ $menuItems = [
                     <ul id="{{ Str::slug($item['title'], '-') }}" class="sidebar-dropdown show list-unstyled collapse ms-4">
                         @foreach($item['submenu'] as $subItem)
                             <li class="sidebar-item">
-                                <a href="{{ $subItem['route'] }}" class="sidebar-link">{{ $subItem['title'] }}</a>
+                                <a href="{{ $subItem['route'] }}" class="sidebar-link {{ request()->routeIs($subItem['routeName']) ? 'active' : '' }}">{{ $subItem['title'] }}</a>
                             </li>
                         @endforeach
                     </ul>
